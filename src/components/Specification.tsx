@@ -1,6 +1,8 @@
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
 import CustomIcons from '../assets/fonts/CustomIcons';
+import HeadingBox from '../BoxComponents/HeadingBox';
+import { dynamicBorderRadius, dynamicFontSize, dynamicIconSize, dynamicPadding, Themes } from '../assets/fonts/color';
 
 const Specification = ({productData}) => {
     const [showFull, setShowFull] = useState(false);
@@ -8,15 +10,14 @@ const Specification = ({productData}) => {
   
     return (
       <View style={styles.container}>
+        <HeadingBox title="Specification" display='none' Textsize={dynamicFontSize*1.5}/>
         <ScrollView contentContainerStyle={styles.scrollContainer}>
           <Text style={styles.specification}>
             {showFull ? productData.specification : productData.Highlights}
           </Text>
 
-          <TouchableOpacity onPress={toggleText}>
-            <Text style={styles.toggleText}>
-                {showFull ? <CustomIcons color={"#FFFFFF"} name="arrow-with-circle-up" size={50}/>: <CustomIcons color={"#FFFFFF"} name="arrow-with-circle-down" size={50}/>}
-            </Text>
+          <TouchableOpacity onPress={toggleText} style={styles.toggleText}>
+                {showFull ? <CustomIcons color={Themes.color2} name="expand-less" size={dynamicFontSize*2}/>: <CustomIcons color={Themes.color2} name="expand-more" size={dynamicFontSize*2}/>}
           </TouchableOpacity>
         </ScrollView>
       </View>
@@ -25,25 +26,22 @@ const Specification = ({productData}) => {
   
   const styles = StyleSheet.create({
     container: {
-    backgroundColor: '#f9f9f9',
-    //   backgroundColor: 'purple',
-      borderRadius: 10,
-      shadowColor: '#000',
-      shadowOffset: { width: 0, height: 2 },
-      shadowOpacity: 0.25,
-      shadowRadius: 3.84,
-      elevation: 5,
+    backgroundColor:Themes.color1,
+    borderRadius:dynamicBorderRadius,
     },
     scrollContainer: {
-    //   paddingBottom: 20,
+      paddingHorizontal:dynamicPadding
+
     },
     specification: {
-      fontSize: 14,
+      fontSize:dynamicFontSize,
+      fontWeight:"bold",
+      color:Themes.color9,
     },
     toggleText: {
-      color: '#007BFF',
-      fontWeight: 'bold',
-      textAlign:"right"
+      position:"absolute",
+      bottom:0,
+      end:0
     },
   });
   

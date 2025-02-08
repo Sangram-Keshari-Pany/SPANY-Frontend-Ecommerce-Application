@@ -1,14 +1,17 @@
-import { StyleSheet, Text, TouchableOpacity, View, Dimensions } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import FastImage from 'react-native-fast-image';
-import { Backgroundcolor, dynamicPadding, Textcolor, Themes } from '../assets/fonts/color';
+import { dynamicPadding, Textcolor, Themes } from '../assets/fonts/color';
 import { contentWidth } from '../assets/fonts/color';
 import { dynamicFontSize } from '../assets/fonts/color';
 
 
-const CategoryBox = ({ name, subcategory }: any) => {
+const CategoryBox = ({navigation,name,subcategory }: any) => {
+  function perform (){
+    navigation.navigate('App')
+  }
   return (
-    <TouchableOpacity style={styles.CategoryBox}>
+    <TouchableOpacity style={styles.CategoryBox} onPress={()=>{navigation.navigate('App',{ categoryId: subcategory[0].category })}}>
       <View style={styles.QuaterBox}>
         {subcategory.slice(0, 4).map((item: any, index: number) => (
           <View key={index} style={styles.SmallBox}>

@@ -13,6 +13,7 @@ import HeadingBox from '../BoxComponents/HeadingBox';
 import Button from '../BoxComponents/Button';
 import { baseURL, useData } from '../../APICall'
 import { demo } from '../../APICall';
+import { dynamicBorderRadius, dynamicFontSize, dynamicMargin, dynamicWidth, Themes } from '../assets/fonts/color';
 
 // Get the screen width and height
 const { width, height } = Dimensions.get('window');
@@ -42,24 +43,20 @@ const ProfileScreen = ({navigation}) => {
         <MyActivity name="My Activity" imageurl={baseURL+userDetails.profile_picture}/>
         <Text style={[styles.greetingText]}>{"Hello \n"+userDetails.username} !</Text>
         <AnouncementBox Announcement={Announcemnet} title="Announcement" icon="arrowright" />
-        
         <TopProduct name="Recently viewed" products={products} navigation={navigation} />
-        
-        <HeadingBox title="Orders" display='none' />
-        
+        <HeadingBox title="Orders" display='none' Textsize={dynamicFontSize*2}/>
         <View style={styles.ordercontainer}>
-          <Button name={"To Pay"} height={50} width={width * 0.25} backgroundColor={"#CCD8FA"} borderRadius={20} color={"blue"} size={20} Function={demo} functiondata={{}} navigation={navigation} />
-          <Button name={"To Recive"} height={50} width={width * 0.3} backgroundColor={"#CCD8FA"} borderRadius={20} color={"blue"} size={20} Function={torecive} functiondata={{}} navigation={navigation} />
-          <Button name={"To Review"} height={50} width={width * 0.3} backgroundColor={"#CCD8FA"} borderRadius={20} color={"blue"} size={20} Function={demo} functiondata={{}} navigation={navigation} />
+          <Button name={"To Pay"} height={dynamicFontSize*3.5} width={dynamicWidth* 0.25} backgroundColor={Themes.color3} borderRadius={dynamicBorderRadius} color={Themes.color11} size={dynamicFontSize*1.5} Function={demo} functiondata={{}} navigation={navigation} />
+          <Button name={"To Recive"} height={dynamicFontSize*3.5} width={dynamicWidth* 0.3} backgroundColor={Themes.color3} borderRadius={dynamicBorderRadius} color={Themes.color11} size={dynamicFontSize*1.5} Function={torecive} functiondata={{}} navigation={navigation} />
+          <Button name={"To Review"} height={dynamicFontSize*3.5} width={dynamicWidth* 0.3} backgroundColor={Themes.color3} borderRadius={dynamicBorderRadius} color={Themes.color11} size={dynamicFontSize*1.5} Function={demo} functiondata={{}} navigation={navigation} />
         </View>
-
         <StoryComponent reviews={reviews} />
         <NewItems products={products} navigation={navigation} />
         <MostPopular mostpopulars={mostpopulars} navigation={navigation} />
         <CategoryComponent categories={categories} subcategories={subcategories} navigation={navigation} />
         <FlashSale flashshales={flashshales} navigation={navigation} />
         <TopProduct name="Top Product" products={products} navigation={navigation} />
-        <JustForYou products={products} navigation={navigation} />
+        <JustForYou products={products} navigation={navigation} title={"Just For You"} />
       </ScrollView>
     </View>
   );
@@ -68,12 +65,19 @@ const ProfileScreen = ({navigation}) => {
 const styles = StyleSheet.create({
   ScreenContainer: {
     flex: 1,
-    backgroundColor: "#FFFFFF",
     width: "100%",
+    backgroundColor:Themes.color1,
+    
   },
   ScrollViewContainer: {
     width: "100%",
     padding: 15,
+  },
+  greetingText: {
+    fontSize: dynamicFontSize*1.5,
+    fontWeight: "bold",
+    marginVertical:dynamicMargin,
+    color:Themes.color9,
   },
   ordercontainer: {
     display: "flex",
@@ -81,11 +85,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     marginVertical: 10,
   },
-  greetingText: {
-    fontSize: width * 0.05, // Responsive font size
-    fontWeight: "bold",
-    marginVertical: 10,
-  },
+  
 });
 
 export default ProfileScreen;

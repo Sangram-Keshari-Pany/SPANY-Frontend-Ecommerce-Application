@@ -12,7 +12,7 @@ export const contentWidth = width - dynamicPadding * 2;
 export const dynamicIconSize = contentWidth < 360 ? 20 : contentWidth < 600 ? 35 : 55;
 
 
-const DarkMood=!false
+const DarkMood=false
 
  export const Themes ={
     color1:DarkMood==true?"#000000":"#FFFFFF", //Dark and white
@@ -25,6 +25,8 @@ const DarkMood=!false
     color8:DarkMood==true?"#ff0070":"#004BFE", //red blue
     color9:DarkMood==true?"#CAC9C9":"#000000", //gray and black
     color10:DarkMood==true?"#434343":"#FFFFFF", //shadow and shadow
+    color11:DarkMood==true?"#CAC9C9":"#0252FF", //Blue and Blue
+
 }
 
 

@@ -2,7 +2,8 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import FastImage from 'react-native-fast-image'
 import { useNavigation } from '@react-navigation/native';
-const SameBox = ({product}) => {
+import { dynamicBorderRadius, dynamicMargin, dynamicWidth } from '../assets/fonts/color';
+const SameBox = ({product}:any) => {
   const navigation = useNavigation();
   return (
     <TouchableOpacity style={styles.productbox} onPress={()=>navigation.navigate('productscreen',product)}>
@@ -15,16 +16,16 @@ export default SameBox
 
 const styles = StyleSheet.create({
     productbox:{
-        height:100,
-        width:100,
+        height:dynamicWidth*0.25,
+        width:dynamicWidth*0.25,
         backgroundColor:"purple",
-        borderRadius:10,
-        marginRight:5,
+        borderRadius:dynamicBorderRadius,
+        marginRight:dynamicMargin,
     },
     image:{
       height:"100%",
       width:"100%",
-      resizeMode:"cover"
+      resizeMode:"contain"
     }
     
 })

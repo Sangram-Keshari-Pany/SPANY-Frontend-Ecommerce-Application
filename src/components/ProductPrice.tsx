@@ -1,94 +1,127 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import CustomIcons from '../assets/fonts/CustomIcons'
+import { dynamicBorderRadius, dynamicFontSize, dynamicIconSize, dynamicPadding, dynamicWidth, Themes } from '../assets/fonts/color'
 
-const ProductPrice = ({productData}) => {
+const ProductPrice = ({ productData }:any) => {
   return (
-    <View style={styles.priceblock}>
+    <View style={styles.mainblock}>
+      <View style={styles.priceblock}>
         <View style={styles.block1}>
-            <View style={styles.block4}><Text style={styles.price}>₹ {Math.round(productData.price)}</Text></View>
-            <View style={styles.block5}><Text>timer</Text></View>
-            <View style={styles.block6}><CustomIcons color={"#FFFFFF"} name="share-outline" size={50}/></View>
+          <View style={styles.block4}><Text style={styles.price}>₹ {Math.round(productData.price)}</Text></View>
+          <View style={styles.block5}>
+            <View style={styles.stopwatch}>
+              <CustomIcons color={Themes.color8} name="stopwatch" size={dynamicIconSize-10} />
+            </View>
+            <View style={styles.stopwatch}>
+              <Text style={styles.stopwatchtime}>12</Text>
+            </View>
+            <View style={styles.stopwatch}>
+              <Text style={styles.stopwatchtime}>12</Text>
+            </View>
+            <View style={styles.stopwatch}>
+              <Text style={styles.stopwatchtime}>00</Text>
+            </View>
+          </View>
+          <TouchableOpacity style={styles.block6}><CustomIcons color={Themes.color7} name="share-outline" size={dynamicIconSize} /></TouchableOpacity>
         </View>
         <View style={styles.block2}>
-            <Text style={styles.specialprice}>{productData.cost_price}</Text>
-            <Text style={styles.specialprice2}>{productData.discount}</Text>
+          <Text style={styles.specialprice}>{productData.cost_price}</Text>
+          <Text style={styles.specialprice2}>{productData.discount}</Text>
         </View>
-        <View style={styles.block3}><Text style={styles.specialname}>{productData.product_name}</Text></View>
+      </View>
+      <View style={styles.block3}><Text style={styles.specialname}>{productData.product_name}</Text></View>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
-    priceblock:{
-        // paddingLeft:15,
-        // paddingRight:15,
-      },
-      block1:{
-        height:60,
-        width:"100%",
-        display:"flex",
-        flexDirection:"row",
-        justifyContent:"space-between"
-      },
-      block2:{
-        height:30,
-        display:"flex",
-        flexDirection:"row",
-        alignItems:"center"
-      },
-      block3:{
-        // height:"50%",
-        // width:"100%",
-        // backgroundColor:"red"
-      },
-      block4:{
-        height:"100%",
-        width:"30%",
-        // backgroundColor:"green",
-        display:"flex",
-        flexDirection:"row",
-        alignItems:"center",
-        padding:5
-      },
-      block5:{
-        height:"100%",
-        width:"40%",
-        // backgroundColor:"red"
-      },
-      block6:{
-        height:"100%",
-        width:"15%",
-        // backgroundColor:"orange",
-        display:"flex",
-        flexDirection:"row",
-        justifyContent:"center",
-        alignItems:"center"
-      },
-      price:{
-        fontSize:25,
-        fontWeight:"bold",
-      },
-      specialprice:{
-        width:"20%",
-        fontSize:15,
-        padding:5,
-        textDecorationLine: 'line-through',
-        color:"red"
-      },
-      specialprice2:{
-        height:25,
-        width:50,
-        fontSize:15,
-        padding:2,
-        color:"white",
-        backgroundColor:"pink",
-        textAlign:"center",
-        borderRadius:5
-      },
-      specialname:{
-        fontWeight:"bold"
-      },
+  mainblock: {
+    flex: 1,
+  },
+  priceblock: {
+    height: dynamicWidth * 0.2,
+    width: dynamicWidth,
+  },
+  block1: {
+    height: "60%",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  block2: {
+    height: "40%",
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  block3: {
+  },
+  block4: {
+    height: "100%",
+    width: "30%",
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    padding:dynamicPadding-10
+  },
+  block5: {
+    height: "100%",
+    width: "50%",
+    // backgroundColor:"pink",
+    display: "flex",
+    flexDirection:"row",
+    alignItems: "center",
+    justifyContent: "space-evenly",
+  },
+  block6: {
+    height: "100%",
+    width: "12%",
+    display: "flex",
+    flexDirection:"row",
+    borderRadius:"50%",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor:Themes.color5,
+  },
+  price: {
+    fontWeight: "bold",
+    color:Themes.color9,
+    fontSize:dynamicFontSize*2,
+  },
+  specialprice: {
+    fontSize:dynamicFontSize*1.5,
+    padding: dynamicPadding-10,
+    textDecorationLine: 'line-through',
+    color:Themes.color7,
+  },
+  specialprice2: {
+    width:"10%",
+    fontSize:dynamicFontSize,
+    padding: 2,
+    color: "white",
+    backgroundColor:"green",
+    textAlign: "center",
+    borderRadius:dynamicBorderRadius-10
+  },
+  specialname: {
+    fontSize:dynamicFontSize*1.5,
+    fontWeight: "bold",
+    color:Themes.color9
+  },
+  stopwatch:{
+    height:"80%",
+    width:"20%",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor:Themes.color3,
+    borderRadius:dynamicBorderRadius-5
+  },
+  stopwatchtime:{
+    fontWeight:"bold",
+    fontSize:dynamicFontSize*1.5,
+    color:Themes.color9
+  }
 
 })
 

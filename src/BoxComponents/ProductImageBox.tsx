@@ -1,27 +1,22 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import FastImage from 'react-native-fast-image'
+import { dynamicBorderRadius } from '../assets/fonts/color'
 
-const ProductImageBox = ({productData}) => {
+const ProductImageBox = ({imageurl}:any) => {
   return (
-    <View style={styles.imagecontainer}>
-        <FastImage source={{uri:productData.product_image1}} style={styles.productimage}/>
-    </View>
+    <FastImage source={{uri:imageurl}} style={styles.productimage}/>
   )
 }
 
-const styles = StyleSheet.create({
-    imagecontainer:{
-        height:400,
-        width:"100%",
-        backgroundColor:"purple",
-    },
+const styles = StyleSheet.create({    
     productimage:{
         height:"100%",
         width:"100%",
-        resizeMode:"contain"
-    },
+        resizeMode:"contain",
+        borderRadius:dynamicBorderRadius,
 
+    },
 })
 
 export default ProductImageBox

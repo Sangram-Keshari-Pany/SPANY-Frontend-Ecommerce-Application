@@ -14,7 +14,7 @@ const CartComponent = ({ orderitems, navigation }: any) => {
           }
         })
       )
-      : (<WishlistEmpty/>)}
+      : (null)}
     </View>
   );
 };

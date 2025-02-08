@@ -15,6 +15,7 @@ import PasswordRecoveryScreen from "./src/screens/PasswordRecoveryScreen"
 import PasswordRecoveryCode from "./src/screens/PasswordRecoveryCode"
 import SetupPasswordScreen from "./src/screens/SetupPasswordScreen"
 import HelloCardScreen from "./src/screens/HelloCardScreen"
+import Deliveredscreen from "./src/screens/DeliveredScreen"
 const Stack = createNativeStackNavigator()
 
 const App = () => {
@@ -34,6 +35,7 @@ const App = () => {
           <Stack.Screen name="productscreen" component={ProductScreen}></Stack.Screen>
           <Stack.Screen name="recivescreen" component={ReciveScreen}></Stack.Screen>
           <Stack.Screen name="reviewscreen" component={ReviewScreen}></Stack.Screen>
+          <Stack.Screen name="Deliveredscreen" component={Deliveredscreen}></Stack.Screen>
         </Stack.Navigator>
       </NavigationContainer>
     </DataProvider>

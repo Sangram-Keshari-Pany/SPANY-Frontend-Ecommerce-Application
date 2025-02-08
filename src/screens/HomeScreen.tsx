@@ -11,9 +11,7 @@ import JustForYou from '../components/JustForYou';
 import { useData } from '../../APICall';
 import { Backgroundcolor, Themes } from '../assets/fonts/color';
 
-import { contentWidth } from '../assets/fonts/color';
 import { dynamicPadding } from '../assets/fonts/color';
-import { dynamicFontSize } from '../assets/fonts/color';
 
 function HomeScreen({ navigation }: any) {
   const { categories, subcategories, products, flashshales, loading } = useData();
@@ -28,20 +26,20 @@ function HomeScreen({ navigation }: any) {
 
     return (
       <View style={styles.ScreenContainer}>
-        <StatusBar hidden={false} barStyle="dark-content" backgroundColor={Backgroundcolor.backgroundWhite}  />
+        <StatusBar hidden={false} barStyle="default"  />
         <ScrollView
           showsVerticalScrollIndicator={false}
           contentContainerStyle={[styles.ScrollViewContainer, { padding: dynamicPadding }]}
           scrollEventThrottle={20}
         >
-          <SearchBar/>
+          <SearchBar title={"Shop"} navigation={navigation}/>
           <SlidingRow/>
           <CategoryComponent categories={categories} subcategories={subcategories} navigation={navigation}/>
           <TopProduct name="Top Products" products={products} navigation={navigation}/>
           <NewItems products={products} navigation={navigation}/>
           <FlashSale flashshales={flashshales} navigation={navigation} />
           <MostPopular mostpopulars={mostpopulars} navigation={navigation} />
-          <JustForYou products={products} navigation={navigation} />
+          <JustForYou products={products} navigation={navigation} title={"Just For You"}/>
         </ScrollView>
       </View>
     );

@@ -1,15 +1,16 @@
 import { StyleSheet, TextInput, View } from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import CustomIcons from '../assets/fonts/CustomIcons';
-import { Themes } from '../assets/fonts/color';
+import { dynamicMargin, Themes } from '../assets/fonts/color';
 import HeadingBox from '../BoxComponents/HeadingBox';
 import { dynamicFontSize } from '../assets/fonts/color';
 import { dynamicPadding } from '../assets/fonts/color';
 import { dynamicBorderRadius } from '../assets/fonts/color';
-const SearchBar = () => {
+const SearchBar = ({title,navigation,searcedhvalue=""}:any) => {
+  const[searchvalue,setSearchvalue]=useState(searcedhvalue)
   return (
     <View style={styles.SearchBar}>
-      <HeadingBox title="Shop" display="none" Textsize={dynamicFontSize *3} />
+      {title.length>1?<HeadingBox title={title} display="none" Textsize={dynamicFontSize *3} />:null}
       <View style={styles.searchbox}>
         <TextInput
           style={styles.Input}
@@ -18,8 +19,13 @@ const SearchBar = () => {
           multiline={false}
           scrollEnabled={true}
           allowFontScaling={false}
+          value={searchvalue}
+          onChangeText={(Text)=>{setSearchvalue(Text)}}
+          onSubmitEditing={()=>{navigation.navigate("Home", { screen: "SearchScreen" ,params:{searchvalue:searchvalue}})}}
         />
-        <CustomIcons name="camera" size={dynamicFontSize * 2} color={Themes.color2} />
+        <View style={styles.camera}>
+          <CustomIcons  name="camera" size={dynamicFontSize * 2} color={Themes.color2} />
+        </View>
       </View>
     </View>
   );
@@ -33,7 +39,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     height: dynamicFontSize * 2.8,
     backgroundColor: Themes.color5,
-    borderRadius: dynamicBorderRadius
+    borderRadius: dynamicBorderRadius,
   },
   SearchBar: {
     display: 'flex',
@@ -44,12 +50,15 @@ const styles = StyleSheet.create({
   Input: {
     flex: 1,
     height: "100%",
-    color: Themes.color6,
+    color: Themes.color4,
     fontFamily: 'Raleway',
     fontSize: dynamicFontSize,
     paddingLeft: dynamicPadding,
     borderRadius: dynamicBorderRadius,
   },
+  camera:{
+    right:5
+  }
 
 });
 

@@ -22,6 +22,7 @@ const CategoryComponent = ({ navigation, categories, subcategories }: any) => {
               key={'Category' + index}
               name={category.category_name}
               subcategory={subcategory}
+              navigation={navigation}
             />
           );
         })}

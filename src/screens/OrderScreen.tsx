@@ -14,7 +14,7 @@ const OrderScreen = ({ navigation }: any) => {
   
   const [totalprice, setTotalprice] = useState(0);
   const [orderdata, setOrderData] = useState({});
-  const [address,setAddress]= useState("Ankita Sahu jay gopal sahi dhenkanal odisha 759019 7978359909")
+  const [address,setAddress]= useState("Ankita Sahu jay gopal sahi dhenkanal odisha 759019 \n7978359909")
 
 
   useEffect(() => {
